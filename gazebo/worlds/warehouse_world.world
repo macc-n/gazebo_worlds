@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- Set the initial camera pose to be looking at the workspace. -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-7.56272 4.06148 6.60308 0 0.636 -0.467992</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <physics type="ode">
+      <!-- <real_time_update_rate>0</real_time_update_rate> -->
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <shadows>false</shadows>
+    </scene>
+
+    <!-- A global light source -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- A directed light source -->
+    <light name="camera_spot_light" type='spot'>
+      <pose>14 -3.0 3.0 -1.55 0.0 -1.62</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0 0 -1</direction>
+      <attenuation>
+        <range>50</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>1</outer_angle>
+        <falloff>1</falloff>
+      </spot>
+    </light>
+
+    <!-- the workcell -->
+    <include>
+      <uri>model://workcell</uri>
+      <pose>0 0 0 0 0 1.57</pose>
+    </include>
+
+    <!-- the shipping container -->
+    <include>
+      <uri>model://shipping_container_ariac</uri>
+      <pose>-4.85 12.5 0 0 0 0</pose>
+    </include>
+
+    <!-- the shipping container conveyor-->
+    <include>
+      <uri>model://shipping_container_conveyor_ariac</uri>
+      <pose>-4.85 12.5 0 0 0 0</pose>
+    </include>
+
+    <!-- a workcell bin-->
+    <include>
+      <uri>model://workcell_bin</uri>
+      <pose>-3.5 2 0 0 0 0</pose>
+    </include>
+
+    <!-- a yellow bin-->
+    <include>
+      <uri>model://yellow_bin_ariac</uri>
+      <pose>1.3 1.5 0.9 0 0 0</pose>
+      <name>yellow_bin_0</name>
+    </include>
+
+    <!-- a yellow bin-->
+    <include>
+      <uri>model://yellow_bin_ariac</uri>
+      <pose>1.3 3 0.9 0 0 0</pose>
+      <name>yellow_bin_1</name>
+    </include>
+
+    <!-- ground plane -->
+    <model name="ground_plane">
+      <static>true</static>
+      <pose>-50 50 -0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>150 150</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

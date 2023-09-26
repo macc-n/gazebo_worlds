@@ -1,0 +1,14 @@
+material fireextinguisherMat/Diffuse
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture fire_extinguisher_col.jpg
+      }
+    }
+  }
+}

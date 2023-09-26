@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="FireExtinguisher">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <scale>0.6 0.6 0.6</scale>
+            <uri>model://fire_extinguisher/meshes/model.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.6 0.6 0.6</scale>
+            <uri>model://fire_extinguisher/meshes/model.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://fire_extinguisher/materials/scripts</uri>
+            <uri>model://fire_extinguisher/materials/textures</uri>
+            <name>fireextinguisherMat/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
